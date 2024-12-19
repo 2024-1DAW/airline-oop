@@ -12,6 +12,38 @@ public class Airline {
         this.flights = flights;
     }
 
+    public void showInfo() {
+        System.out.println("Aerolinea " + name);
+        for (var flight : flights) {
+            flight.showInfo();
+        }
+    }
+
+    public void showFlightsFromOrigin(String origin) {
+        for (var flight : flights) {
+            if (flight.getOrigin().equals(origin)) {
+                flight.showInfo();
+            }
+        }
+    }
+
+    public Flight findFlight(int flightNumber) {
+        for(var flight: flights) {
+            if(flight.getFlightNumber() == flightNumber) {
+                return flight;
+            }
+        }
+        return null;
+    }
+
+    public void showPassengerFlights(String nif) {
+        for(var flight: flights) {
+            if(flight.hasPassenger(nif)) {
+                flight.showInfo();
+            }
+        }
+    }
+
     public String getName() {
         return name;
     }
